@@ -38,11 +38,12 @@ def report():
             payload = {
                 "channel_id": chanid, "message_id": msgid, "guild_id": gldid, "reason" : reason
                 }
-            r = requests.post('https://discord.com/api/v9/report', headers=header, json=payload)
-            if r.status_code == 201:
-                print ("%s Succesfully reported user. %s" % (green(), reset()))
-            else:
-                print ("%s Failed to report. %s" % (red(), reset()))
+            while True:
+                r = requests.post('https://discord.com/api/v9/report', headers=header, json=payload)
+                if r.status_code == 201:
+                    print ("%s Succesfully reported user. %s" % (green(), reset()))
+                else:
+                    print ("%s Failed to report. %s" % (red(), reset()))
 
 report()
 end = input("\n\n%sReporting is done, press any key to exit%s" % (cyan(), reset())) 
