@@ -3,7 +3,14 @@ from lxml.html import fromstring
 import requests
 from itertools import cycle
 import traceback
-from colors import green, red, yellow, white, cyan, reset, blue
+from colors import green, red, yellow, white, cyan, reset, blue, magenta
+
+
+# 0: {reason: 0, label: "Illegal Content",…}
+# 1: {reason: 1, label: "Harassment",…}
+# 2: {reason: 2, label: "Spam or Phishing Links",…}
+# 3: {reason: 3, label: "Self Harm", description: "Person is at risk of claimed intent of self-harm."}
+# 4: {reason: 4, label: "NSFW Content",…}
 
 print("""
 
@@ -21,6 +28,8 @@ print("""
 
 """)
 print("Made by %sTakaso%s and fixed by %sGlobal Occult Coalition%s" % (red(), reset(), blue(), reset()))
+print("%s\nReasons:%s\n%s0 = Illegal Content\n1 = Harassment\n2 = Spam or phishing links\n3 = Self Harm\n4 = NSFW Content%s\n%sYou have to choose one of these numbers as reason!%s" % (white(), reset(), magenta(), reset(), white(), reset()))
+
 
 chanid = input("\n%sInsert channel ID: %s" % (blue(), reset()))
 msgid = input("%sInsert message ID: %s" % (blue(), reset()))
