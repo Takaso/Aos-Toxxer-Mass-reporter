@@ -26,6 +26,7 @@ chanid = input("\n%sInsert channel ID: %s" % (blue(), reset()))
 msgid = input("%sInsert message ID: %s" % (blue(), reset()))
 gldid = input("%sInsert guild ID: %s" % (blue(), reset()))
 reason = input("%sChoose the reason: %s" % (blue(), reset()))
+numbersoftimes =  int(input("%sSelect the number of reports to do with each account: %s" % (blue(), reset())))
 
 def report():
     with open("tokens.txt", "r") as tokens:
@@ -40,7 +41,7 @@ def report():
                 "channel_id": chanid, "message_id": msgid, "guild_id": gldid, "reason" : reason
                 }
             times = 1
-            while times<=30:
+            while times <= numbersoftimes:
                 r = requests.post('https://discord.com/api/v9/report', headers=header, json=payload)
                 if r.status_code == 201:
                     print (f"\n%s Succesfully reported user {times} times. %s" % (green(), reset()))
