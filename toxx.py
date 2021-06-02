@@ -1,3 +1,4 @@
+from typing_extensions import runtime
 from lxml.html import fromstring
 import requests
 from itertools import cycle
@@ -38,12 +39,14 @@ def report():
             payload = {
                 "channel_id": chanid, "message_id": msgid, "guild_id": gldid, "reason" : reason
                 }
-            while True:
+            times = 1
+            while times<=30:
                 r = requests.post('https://discord.com/api/v9/report', headers=header, json=payload)
                 if r.status_code == 201:
-                    print ("%s Succesfully reported user. %s" % (green(), reset()))
+                    print (f"\n%s Succesfully reported user {times} times. %s" % (green(), reset()))
+                    times += 1
                 else:
                     print ("%s Failed to report. %s" % (red(), reset()))
 
 report()
-end = input("\n\n%sReporting is done, press any key to exit%s" % (cyan(), reset())) 
+end = input("\n\n%sReporting is done, if you want it to be longer add more tokens, press any key to exit: %s" % (cyan(), reset())) 
