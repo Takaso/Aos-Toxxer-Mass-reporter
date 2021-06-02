@@ -34,7 +34,7 @@ def report():
                 "channel_id": chanid, "message_id": msgid, "guild_id": gldid
                 }
             r = requests.post("https://discord.com/api/v9/report", data=payload, headers=header)
-            if r.status_code == 203821754974610391040:
+            if r.status_code == 203:
                 print ("%s Succesfully reported user. %s" % (green(), reset()))
             else:
                 print ("%s Failed to report. %s" % (red(), reset()))
