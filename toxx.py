@@ -1,8 +1,4 @@
-from typing_extensions import runtime
-from lxml.html import fromstring
 import requests
-from itertools import cycle
-import traceback
 from colors import green, red, yellow, white, cyan, reset, blue, magenta
 
 
